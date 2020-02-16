@@ -1,11 +1,16 @@
 import graphene
-from .models import User
 from .types import UserType
+from .queries import resolve_user
+from .mutations import CreateAccountMutation
 
 
 class Query(object):
 
-    user = graphene.Field(UserType, id=graphene.Int(required=True))
+    user = graphene.Field(
+        UserType, id=graphene.Int(required=True), resolver=resolve_user
+    )
 
-    def resolve_user(self, info, id):
-        return User.objects.get(id=id)
+
+class Mutation(object):
+
+    create_account = CreateAccountMutation.Field()
