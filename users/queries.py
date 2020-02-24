@@ -7,7 +7,6 @@ def resolve_user(root, info, id):
 
 def resolve_me(root, info):
     user = info.context.user
-    print(user)
     if user.is_authenticated:
         return user
     else:
