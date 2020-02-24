@@ -1,6 +1,6 @@
 import graphene
 from .types import UserType
-from .queries import resolve_user
+from .queries import resolve_user, resolve_me
 from .mutations import CreateAccountMutation, LoginMutation
 
 
@@ -9,6 +9,7 @@ class Query(object):
     user = graphene.Field(
         UserType, id=graphene.Int(required=True), resolver=resolve_user
     )
+    me = graphene.Field(UserType, resolver=resolve_me)
 
 
 class Mutation(object):
