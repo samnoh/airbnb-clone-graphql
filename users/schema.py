@@ -1,7 +1,12 @@
 import graphene
 from .types import UserType
 from .queries import resolve_user, resolve_me
-from .mutations import CreateAccountMutation, LoginMutation, ToggleFavsMutation
+from .mutations import (
+    CreateAccountMutation,
+    LoginMutation,
+    ToggleFavsMutation,
+    EditProfileMutation,
+)
 
 
 class Query(object):
@@ -17,3 +22,4 @@ class Mutation(object):
     create_account = CreateAccountMutation.Field()
     login = LoginMutation.Field()
     toggle_favs = ToggleFavsMutation.Field()
+    edit_profile = EditProfileMutation.Field()
